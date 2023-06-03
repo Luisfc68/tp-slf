@@ -3,5 +3,5 @@ env-build:
 
 env-windows:
 	for /f "usebackq tokens=*" %%p IN (`echo %cd%`) do \
-		docker run -v %%p:/home/ant/workspace --name tp \
+		docker run -v %%p\workspace:/home/ant/workspace --name tp \
 		-ti ant /bin/bash
