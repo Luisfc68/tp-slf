@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [ "$1" = "--help" ]; then
+    echo "generate-tree <name of the grammar> <grammar root rule> <file to test> <output file width> <output file height>"
+    echo "Tests a compiled grammar with a specific file and generate the corresponding tree.
+        This commands requires to have a grammars directory and an inputs directory in the 
+        current directory."
+    exit 0
+fi
+
+if ! [ -d "./grammars" ] || ! [ -d "./inputs" ];
+then
+    echo "The grammars and inputs directories are required"
+    exit -1
+fi
+
+mkdir -p trees
+cd grammars
+java -Xmx500M -cp /usr/local/lib/ant.jar: org.antlr.v4.gui.TestRig $1 \
+    $2 ../inputs/$3 -ps ../trees/$3.temp
+
+OUTPUT=$(echo "$3" | cut -d '.' -f 1).png
+
+echo "Writting to $OUTPUT..."
+
+
+gs -dNOPAUSE -dBATCH -sDEVICE=png16m -r300 -dGraphicsAlphaBits=4 \
+    -dTextAlphaBits=4 -dFIXEDMEDIA -dDEVICEWIDTHPOINTS=$4 -dDEVICEHEIGHTPOINTS=$5 \
+    -sOutputFile=../trees/$OUTPUT ../trees/$3.temp
+
+rm ../trees/$3.temp
