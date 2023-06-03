@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$1" = "--help" ]; then
+    echo "test-grammar <name of the grammar> <grammar root rule> <file to test>"
+    echo "Tests a compiled grammar with a specific file. This commands requires
+        to have a grammars directory and an inputs directory in the current directory."
+    exit -1
+fi
+
+if ! [ -d "./grammars" ] || ! [ -d "./inputs" ];
+then
+    echo "The grammars and inputs directories are required"
+    exit -1
+fi
+
+cd grammars
+java -Xmx500M -cp /usr/local/lib/ant.jar: org.antlr.v4.gui.TestRig $1 $2 ../inputs/$3

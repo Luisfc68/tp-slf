@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" = "--help" ]; then
+    echo "build-grammar <name of the grammar>"
+    echo "Generates the lexer files for the specified grammar. 
+        The grammar must be in the grammars/ folder in the current directory"
+    exit -1
+fi
+
+echo Building grammar "$1"...
+java -Xmx500M -cp /usr/local/lib/ant.jar: org.antlr.v4.Tool $(pwd)/grammars/$1.g4
+javac $(pwd)/grammars/$1*.java && echo Build successful || echo Build failed

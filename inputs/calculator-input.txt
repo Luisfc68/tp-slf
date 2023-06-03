@@ -1,0 +1,41 @@
+func calculator(firstNumber, secondNumber, operation) {
+    switch (operation) {
+        on "+":
+            return (firstNumber + secondNumber);
+        on "-":
+            return (firstNumber - secondNumber);
+        on "*":
+            return (firstNumber * secondNumber);
+        on "/":
+            if (secondNumber != 0) {
+                return (firstNumber / secondNumber);
+            } else {
+                show("Division by 0 not allowed");
+                return null;
+            }
+        on "%":
+            if (secondNumber != 0) {
+                return (firstNumber % secondNumber);
+            } else {
+                show("Division by 0 not allowed");
+                return null;
+            }
+        default:
+            show("Invalid operation");
+            return null;
+    }
+}
+
+const firstNumber = int(stdInput("Insert first number -> \n"));
+const secondNumber = int(stdInput("Insert second number -> \n"));
+
+var operation = stdInput("Insert operator -> \n");
+while (secondNumber == 0 && operation == "/" || operation == "%") {
+    operation = stdInput("Insert operator again -> \n");
+}
+
+const result = calculator(firstNumber, secondNumber, operation);
+
+if (result != null) {
+    show("The result is "+result);
+}

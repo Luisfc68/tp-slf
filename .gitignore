@@ -1,0 +1,3 @@
+grammars/**
+!grammars/**/*.g4
+.antlr/
