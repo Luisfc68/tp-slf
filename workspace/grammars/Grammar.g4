@@ -23,7 +23,7 @@ exp: bool_exp | num_exp | concat_exp;
 
 num_exp: term | num_exp '+' term | num_exp '-' term;
 term: factor | term '*' factor | term '/' factor | term '%' factor;
-factor: '('num_exp')' | NUM | call | ID; // preguntar lo de los parentesis, si los quito me da error
+factor: '('num_exp')' | NUM | call | ID;
 
 bool_exp: bool_exp '&&' low_bool_exp | low_bool_exp;
 low_bool_exp: low_bool_exp '||' comparison | comparison;
@@ -52,5 +52,5 @@ return: 'return '(value)?;
 WS : [ \t\r\n]+ -> skip;
 ID : [a-zA-Z0-9]+;
 NUM: [0-9]+;
-STRING: '"'[a-zA-Z0-9+-/%>*\\ ]*'"';
+STRING: '"'.*?'"';
 COMPARATOR: '>='|'<='|'<'|'>'|'=='|'!=';
