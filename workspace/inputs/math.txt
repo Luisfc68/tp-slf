@@ -1,0 +1,9 @@
+const a = (5 + 3 * 8);
+const b = int(show("ingrese numero: "));
+
+if (b != 0) {
+    show("la division por 0 no esta permitida");
+} else {
+    const c = (a / b);
+    show("resultado = " + c);
+}
