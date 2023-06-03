@@ -7,7 +7,7 @@ RUN useradd -m -u 1000 $USER && \
     curl -O https://www.antlr.org/download/antlr-4.12.0-complete.jar && \
     mv antlr-4.12.0-complete.jar /usr/local/lib/ant.jar && \
     apt-get update -y && \
-    apt-get install build-essential ghostscript -y
+    apt-get install build-essential ghostscript vim -y
 
 WORKDIR $HOME
 USER ant

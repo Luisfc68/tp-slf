@@ -4,7 +4,7 @@ if [ "$1" = "--help" ]; then
     echo "build-grammar <name of the grammar>"
     echo "Generates the lexer files for the specified grammar. 
         The grammar must be in the grammars/ folder in the current directory"
-    exit -1
+    exit 0
 fi
 
 echo Building grammar "$1"...
