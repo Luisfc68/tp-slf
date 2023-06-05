@@ -50,7 +50,7 @@ default_stm: 'default' ':' (stm)*;
 return: 'return '(value)?;
 
 WS : [ \t\r\n]+ -> skip;
-ID : [a-zA-Z0-9]+;
+ID : [a-zA-Z]+[a-zA-Z0-9]*;
 NUM: [0-9]+;
 STRING: '"'.*?'"';
 COMPARATOR: '>='|'<='|'<'|'>'|'=='|'!=';
